@@ -35,8 +35,8 @@ def create_access_token(
 
     return jwt.encode(
         payload,
-        settings.SECRET_KEY,
-        algorithm=settings.ALGORITHM,
+        settings.SECRET_KEY.strip(),
+        algorithm=settings.ALGORITHM.strip(),
     )
 
 
@@ -46,9 +46,9 @@ def decode_access_token(
     try:
         payload = jwt.decode(
             token,
-            settings.SECRET_KEY,
+            settings.SECRET_KEY.strip(),
             algorithms=[
-                settings.ALGORITHM
+                settings.ALGORITHM.strip()
             ],
         )
 
